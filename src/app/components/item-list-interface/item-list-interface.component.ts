@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Item } from 'src/app/models/Item';
 import { HttpService } from 'src/app/services/http.service';
 
 @Component({
@@ -8,12 +9,22 @@ import { HttpService } from 'src/app/services/http.service';
 })
 export class ItemListInterfaceComponent implements OnInit {
 
+  itemList: Array<Item> = [];
+  itemGroup: number | undefined;
+  msg: string | undefined;
+
   constructor(private http: HttpService){}
 
   ngOnInit(): void {
-    this.http.getItemList().subscribe(res => {
-      console.log(res);
-    })
+    //retreive item list via API
+    this.http.getItemList().subscribe(
+      res => {
+        this.itemList = res.filter(item => item.name );
+      },
+      err => {
+        this.msg = "An error occurred while retreiving data.";
+      }
+    )
   }
 
 }
