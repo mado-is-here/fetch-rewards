@@ -1,0 +1,7 @@
+{
+    "/hiring.json": {
+      "target": "https://fetch-hiring.s3.amazonaws.com",
+      "secure": true,
+      "changeOrigin": true
+    }
+  }
