@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-item-group-selector',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./item-group-selector.component.scss']
 })
 export class ItemGroupSelectorComponent implements OnInit {
+
+  @Input() itemGroups: Array<number> = [];
 
   constructor() { }
 

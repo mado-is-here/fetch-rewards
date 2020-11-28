@@ -10,8 +10,8 @@ import { HttpService } from 'src/app/services/http.service';
 export class ItemListInterfaceComponent implements OnInit {
 
   itemList: Array<Item> = [];
-  itemGroup: number | undefined;
-  msg: string | undefined;
+  itemGroups: Array<number> = [];
+  msg: string = '';
 
   constructor(private http: HttpService){}
 
@@ -20,6 +20,10 @@ export class ItemListInterfaceComponent implements OnInit {
     this.http.getItemList().subscribe(
       res => {
         this.itemList = res.filter(item => item.name );
+        this.itemGroups = this.itemList
+          .map(item => item.listId )
+          .filter((item, index, self) => self.indexOf(item) === index)
+          .sort();
       },
       err => {
         this.msg = "An error occurred while retreiving data.";
