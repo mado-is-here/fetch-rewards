@@ -1,12 +1,20 @@
 <p>{{ msg }}</p>
-<div>
-    <!-- <app-item-group-selector 
-        class="col-6"
-        [itemGroups]="itemGroups">
-    </app-item-group-selector> -->
-    <app-item-list 
-        class="col-6"
-        [itemList]="itemList">
-    </app-item-list> 
+<div *ngIf="itemList && selectedListId && listIdArray" class="flex-row">
+    <app-item-group-selector
+        class="col-1"
+        [listIdArray]="listIdArray">
+    </app-item-group-selector>
+    <ng-container *ngFor="let listId of listIdArray">
+    <app-data-table 
+        *ngIf="selectedListId === listId"
+        [itemList]="filteredItemList"
+        [selectedListId]="selectedListId">
+    </app-data-table>
+    </ng-container>
+    <app-data-table 
+        *ngIf="selectedListId === -1"
+        [itemList]="filteredItemList"
+        [selectedListId]="selectedListId">
+    </app-data-table>
 </div>
 
