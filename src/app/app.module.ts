@@ -5,24 +5,30 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ItemListInterfaceComponent } from './components/item-list-interface/item-list-interface.component';
-import { ItemListComponent } from './components/item-list/item-list.component';
 import { ItemGroupSelectorComponent } from './components/item-group-selector/item-group-selector.component';
 import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DataTableComponent } from './components/data-table/data-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
     AppComponent,
     ItemListInterfaceComponent,
-    ItemListComponent,
     ItemGroupSelectorComponent,
     HeaderComponent,
-    FooterComponent
+    DataTableComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
